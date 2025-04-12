@@ -1,10 +1,14 @@
 import { IoBagOutline, IoFilterOutline } from "react-icons/io5"
 
-const Navigation = () => {
+interface NavigationProps {
+  toggleSidebar: () => void;
+}
+
+const Navigation = ({ toggleSidebar }: NavigationProps) => {
   return (
     <div className="mt-[2rem] container w-[90%] ml-[5rem] flex justify-between items-center">
       <h1 className="logo">
-        <IoFilterOutline size={27} className="ml-[4rem] cursor-pointer" />
+        <IoFilterOutline onClick={toggleSidebar} size={27} className="ml-[4rem] cursor-pointer" />
       </h1>
 
       <nav>
