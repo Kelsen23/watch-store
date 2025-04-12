@@ -7,7 +7,7 @@ const App = () => {
     <div>
       <Sidebar />
       <div className="p-4 flex flex-wrap justify-center items-center">
-        {data.map((product) => (
+        {data.map((product: any) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
