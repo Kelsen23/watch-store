@@ -3,20 +3,11 @@ import Sidebar from "./components/Sidebar";
 import { data } from "./db/data";
 import { useFilterStore } from "./store.js";
 
-interface Product {
-  id: string;
-  img: Record<string, string>;
-  title: string;
-  price: number;
-  company: string;
-  country: string;
-}
-
 const App = () => {
   const { selectedCountries, selectedColors, selectedPriceRange } =
     useFilterStore();
 
-  const filteredData = data.filter((item: Product) => {
+  const filteredData = data.filter((item) => {
     const matchesColors =
       selectedColors.length === 0 ||
       Object.keys(item.img).some((color) => selectedColors.includes(color));

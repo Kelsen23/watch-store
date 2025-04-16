@@ -4,22 +4,6 @@ import { useFilterStore } from "../store";
 import { data } from "../db/data";
 import Navigation from "./Navigation";
 
-interface FilterState {
-  selectedCountries: string[];
-  selectedColors: string[];
-  selectedPriceRange: { min: number; max: number } | null;
-  setSelectedCountries: (countries: string[]) => void;
-  setSelectedColors: (colors: string[]) => void;
-  setSelectedPriceRange: (range: { min: number; max: number } | null) => void;
-  clearFilters: () => void;
-}
-
-interface Product {
-  country: string;
-  img: Record<string, string>;
-  price: number;
-}
-
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [countryDropdown, setCountryDropdown] = useState<boolean>(false);
@@ -34,7 +18,7 @@ const Sidebar = () => {
     setSelectedColors,
     setSelectedPriceRange,
     clearFilters,
-  } = useFilterStore<FilterState>((state) => state);
+  } = useFilterStore((state) => state);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
@@ -65,7 +49,7 @@ const Sidebar = () => {
   };
 
   const uniqueCountries: string[] = Array.from(
-    new Set(data.map((item: Product) => item.country))
+    new Set(data.map((item) => item.country))
   );
 
   return (
